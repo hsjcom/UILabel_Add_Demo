@@ -15,6 +15,7 @@
 		B241A3861DE57C1200862D20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B241A3841DE57C1200862D20 /* LaunchScreen.storyboard */; };
 		B241A3911DE57C1200862D20 /* UILabel_Add_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B241A3901DE57C1200862D20 /* UILabel_Add_DemoTests.m */; };
 		B241A39C1DE57C1200862D20 /* UILabel_Add_DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B241A39B1DE57C1200862D20 /* UILabel_Add_DemoUITests.m */; };
+		B241A3AB1DE57C2A00862D20 /* UILabel+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = B241A3AA1DE57C2A00862D20 /* UILabel+Add.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		B241A3971DE57C1200862D20 /* UILabel_Add_DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UILabel_Add_DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B241A39B1DE57C1200862D20 /* UILabel_Add_DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UILabel_Add_DemoUITests.m; sourceTree = "<group>"; };
 		B241A39D1DE57C1200862D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B241A3A91DE57C2A00862D20 /* UILabel+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Add.h"; sourceTree = "<group>"; };
+		B241A3AA1DE57C2A00862D20 /* UILabel+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Add.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				B241A37A1DE57C1100862D20 /* AppDelegate.m */,
 				B241A37C1DE57C1100862D20 /* ViewController.h */,
 				B241A37D1DE57C1100862D20 /* ViewController.m */,
+				B241A3A91DE57C2A00862D20 /* UILabel+Add.h */,
+				B241A3AA1DE57C2A00862D20 /* UILabel+Add.m */,
 				B241A37F1DE57C1200862D20 /* Main.storyboard */,
 				B241A3821DE57C1200862D20 /* Assets.xcassets */,
 				B241A3841DE57C1200862D20 /* LaunchScreen.storyboard */,
@@ -278,6 +283,7 @@
 			files = (
 				B241A37E1DE57C1100862D20 /* ViewController.m in Sources */,
 				B241A37B1DE57C1100862D20 /* AppDelegate.m in Sources */,
+				B241A3AB1DE57C2A00862D20 /* UILabel+Add.m in Sources */,
 				B241A3781DE57C1100862D20 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
