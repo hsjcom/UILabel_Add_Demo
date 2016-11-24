@@ -27,14 +27,14 @@
 /**
  * 关键字
  */
-@property (nonatomic, copy) NSString *keywords;
+@property (nonatomic, strong) NSString *keywords;
 @property (nonatomic, strong) UIFont *keywordsFont;
 @property (nonatomic, strong) UIColor *keywordsColor;
 
 /**
  * 下划线
  */
-@property (nonatomic, copy) NSString *underlineStr;
+@property (nonatomic, strong) NSString *underlineStr;
 @property (nonatomic, strong) UIColor *underlineColor;
 
 /**
@@ -42,16 +42,19 @@
  */
 @property (nonatomic, strong) NSString *styleText;
 
+/**
+ * HTML string
+ */
+@property (nonatomic, strong) NSString *htmlString;
 
 - (CGSize)getLabelSizeWithMaxWidth:(CGFloat)maxWidth;
 
 /**
  计算文本高度，适用于普通文本
- 
- @param text
- @param maxWidth
- @param font
- @param numberOfLines
+ @param text text
+ @param maxWidth maxWidth
+ @param font font
+ @param numberOfLines numberOfLines
  
  @return CGSize
  */
@@ -62,12 +65,12 @@
 /**
  计算文本高度，适用于需要修改行间距字间距的文本
  
- @param text
- @param maxWidth
- @param font
- @param numberOfLines
- @param lineSpace
- @param wordSpace
+ @param text text
+ @param maxWidth maxWidth
+ @param font font
+ @param numberOfLines numberOfLines
+ @param lineSpace lineSpace
+ @param wordSpace wordSpace
  
  @return CGSize
  */
@@ -83,5 +86,13 @@
                          font:(UIFont *)font
                 numberOfLines:(NSInteger)numberOfLines
                     lineSpace:(CGFloat)lineSpace;
+
+/**
+ 计算HTML文本高度
+ @return CGSize
+ */
++ (CGSize)getTextSizeForHtmlString:(NSString *)htmlString
+                          maxWidth:(CGFloat)maxWidth
+                     numberOfLines:(NSInteger)numberOfLines;
 
 @end

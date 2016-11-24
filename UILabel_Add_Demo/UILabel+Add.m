@@ -110,25 +110,59 @@
     }
     
     //关键字
-    if (self.keywords.length > 0) {
-        NSRange kRange = [self.text rangeOfString:self.keywords];
+    if (self.keywords.length > 0 && (self.keywordsColor || self.keywordsFont)) {
+        
+        NSRange kRange = [styleText rangeOfString:self.keywords options:NSBackwardsSearch range:NSMakeRange(0, styleText.length)];
+        
         if (kRange.length > 0) {
+            
             if (self.keywordsFont) {
                 [attributedString addAttribute:NSFontAttributeName value:self.keywordsFont range:kRange];
             }
             if (self.keywordsColor) {
                 [attributedString addAttribute:NSForegroundColorAttributeName value:self.keywordsColor range:kRange];
             }
+            
+            while(kRange.location != NSNotFound) {
+                NSLog(@"start = %@", NSStringFromRange(kRange));
+                NSUInteger start = 0;
+                NSUInteger end = kRange.location;
+                NSRange temp = NSMakeRange(start, end);
+                kRange = [styleText rangeOfString:self.keywords options:NSBackwardsSearch range:temp];
+                
+                if (self.keywordsFont) {
+                    [attributedString addAttribute:NSFontAttributeName value:self.keywordsFont range:kRange];
+                }
+                if (self.keywordsColor) {
+                    [attributedString addAttribute:NSForegroundColorAttributeName value:self.keywordsColor range:kRange];
+                }
+            }
         }
     }
     
     //下划线
     if (self.underlineStr.length > 0) {
-        NSRange uRange = [self.text rangeOfString:self.underlineStr];
+        
+        NSRange uRange = [styleText rangeOfString:self.underlineStr options:NSBackwardsSearch range:NSMakeRange(0, styleText.length)];
+        
         if (uRange.length > 0) {
+            
             [attributedString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:uRange];
             if (self.underlineColor) {
                 [attributedString addAttribute:NSUnderlineColorAttributeName value:self.underlineColor range:uRange];
+            }
+            
+            while(uRange.location != NSNotFound) {
+                NSLog(@"start = %@", NSStringFromRange(uRange));
+                NSUInteger start = 0;
+                NSUInteger end = uRange.location;
+                NSRange temp = NSMakeRange(start, end);
+                uRange = [styleText rangeOfString:self.underlineStr options:NSBackwardsSearch range:temp];
+                
+                [attributedString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:uRange];
+                if (self.underlineColor) {
+                    [attributedString addAttribute:NSUnderlineColorAttributeName value:self.underlineColor range:uRange];
+                }
             }
         }
     }
@@ -144,6 +178,11 @@
     
     CGSize maximumLabelSize = CGSizeMake(maxWidth, MAXFLOAT);
     CGSize size = [self sizeThatFits:maximumLabelSize];
+//    if (self.lineSpace > 0) {
+//        if (size.height < self.font.pointSize * 2) { //1行
+//            size.height -= self.lineSpace;
+//        }
+//    }
     
     return size;
 }
@@ -152,10 +191,10 @@
 /**
  计算文本高度，适用于普通文本
 
- @param text
- @param maxWidth
- @param font
- @param numberOfLines
+ @param text text
+ @param maxWidth maxWidth
+ @param font font
+ @param numberOfLines numberOfLines
 
  @return CGSize
  */
@@ -174,12 +213,12 @@
 /**
  计算文本高度，适用于需要修改行间距字间距的文本
 
- @param text
- @param maxWidth
- @param font
- @param numberOfLines
- @param lineSpace
- @param wordSpace
+ @param text text
+ @param maxWidth maxWidth
+ @param font font
+ @param numberOfLines numberOfLines
+ @param lineSpace lineSpace
+ @param wordSpace wordSpace
 
  @return CGSize
  */
@@ -240,6 +279,39 @@
                 numberOfLines:(NSInteger)numberOfLines
                     lineSpace:(CGFloat)lineSpace {
     return [self getTextSizeWithText:text maxWidth:maxWidth font:font numberOfLines:numberOfLines lineSpace:lineSpace wordSpace:0];
+}
+
+
+#pragma mark - HTML
+
+- (NSString *)htmlString {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setHtmlString:(NSString *)htmlString {
+    objc_setAssociatedObject(self, @selector(htmlString), htmlString, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    if (htmlString.length <= 0) {
+        return;
+    }
+    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    
+    self.attributedText = attrStr;
+}
+
++ (CGSize)getTextSizeForHtmlString:(NSString *)htmlString
+                          maxWidth:(CGFloat)maxWidth
+                     numberOfLines:(NSInteger)numberOfLines{
+    if (htmlString.length <= 0) {
+        return CGSizeZero;
+    }
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.textAlignment = NSTextAlignmentLeft;
+    label.numberOfLines = numberOfLines;
+    label.htmlString = htmlString;
+    
+    CGSize size = [label getLabelSizeWithMaxWidth:maxWidth];
+    return size;
 }
 
 @end
