@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UILabel+Add.h"
 
 @interface ViewController ()
 
@@ -16,9 +17,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self constructView];
 }
 
+- (void)constructView {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 64, self.view.frame.size.width - 32, 350)];
+    label.font = [UIFont systemFontOfSize:18];
+    label.numberOfLines = 0;
+    [self.view addSubview:label];
+    
+    label.lineSpace = 10;
+    label.wordSpace = 10;
+    label.keywords = @"困难于其易，为大于其细。天下难事必作于易，天下大事必于细。";
+    label.keywordsFont = [UIFont boldSystemFontOfSize:20];
+    label.keywordsColor = [UIColor orangeColor];
+    label.underlineStr = @"多";
+    label.underlineColor = [UIColor orangeColor];
+    
+    label.styleText = @"为无为，事无事，味无味。大小多少，报怨以德。困难于其易，为大于其细。天下难事必作于易，天下大事必于细。是以圣人终不为大，故能成其大。夫轻诺必寡信，多易必多难。是以圣人犹难之，故终无难矣。";
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
