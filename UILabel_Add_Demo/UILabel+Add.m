@@ -124,7 +124,7 @@
             }
             
             while(kRange.location != NSNotFound) {
-                NSLog(@"start = %@", NSStringFromRange(kRange));
+//                NSLog(@"start = %@", NSStringFromRange(kRange));
                 NSUInteger start = 0;
                 NSUInteger end = kRange.location;
                 NSRange temp = NSMakeRange(start, end);
@@ -153,7 +153,7 @@
             }
             
             while(uRange.location != NSNotFound) {
-                NSLog(@"start = %@", NSStringFromRange(uRange));
+//                NSLog(@"start = %@", NSStringFromRange(uRange));
                 NSUInteger start = 0;
                 NSUInteger end = uRange.location;
                 NSRange temp = NSMakeRange(start, end);
@@ -296,6 +296,10 @@
     NSAttributedString *attrStr = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
     
     self.attributedText = attrStr;
+    
+    /*
+     改变字体需在设置htmlString之后设置 
+     */
 }
 
 + (CGSize)getTextSizeForHtmlString:(NSString *)htmlString
