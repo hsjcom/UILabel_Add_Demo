@@ -77,7 +77,7 @@
     self.label.underlineStr = @"夫轻诺必寡信，多易必多难。";
     self.label.underlineColor = [UIColor orangeColor];
     
-    self.label.styleText = @"为无为，事无事，味无味。大小多少，报怨以德。困难于其易，为大于其细。天下难事必作于易，天下大事必于细。是以圣人终不为大，故能成其大。夫轻诺必寡信，多易必多难。是以圣人犹难之，故终无难矣。";
+    self.label.text = @"为无为，事无事，味无味。大小多少，报怨以德。困难于其易，为大于其细。天下难事必作于易，天下大事必于细。是以圣人终不为大，故能成其大。夫轻诺必寡信，多易必多难。是以圣人犹难之，故终无难矣。";
     
     [self.label sizeToFit];
     self.label.frame = CGRectMake(20, 80, self.view.frame.size.width - 40, self.label.frame.size.height);

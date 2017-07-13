@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UILabel_Add_Demo/UILabel+Add.m"
-            timestampString = "501586171.358434"
+            timestampString = "521609583.279903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-setStyleText:"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-hb_setText:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UILabel_Add_Demo/UILabel+Add.m"
-            timestampString = "501586171.358434"
+            timestampString = "521609583.279903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-setStyleText:"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-hb_setText:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

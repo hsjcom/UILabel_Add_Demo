@@ -25,6 +25,11 @@
 @property (nonatomic, assign) CGFloat lineSpace;
 
 /**
+ AttributedString addAttributes
+ */
+@property (nonatomic, strong) NSMutableDictionary *attributes;
+
+/**
  * 关键字
  */
 @property (nonatomic, strong) NSString *keywords;
@@ -38,14 +43,20 @@
 @property (nonatomic, strong) UIColor *underlineColor;
 
 /**
- * 使用styleText赋值
- */
-@property (nonatomic, strong) NSString *styleText;
-
-/**
  * HTML string
  */
 @property (nonatomic, strong) NSString *htmlString;
+
+- (void)setStrokeText:(NSString *)text
+          strokeWidth:(CGFloat)width
+          strokeColor:(UIColor *)color;
+
+/**
+ AttributedString addAttributes
+ */
+- (void)setAttributeName:(NSString *)name
+          attributeValue:(id)value
+                   range:(NSRange)range;
 
 - (CGSize)getLabelSizeWithMaxWidth:(CGFloat)maxWidth;
 
